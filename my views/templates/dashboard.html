@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<h1>Recipe categories</h1>
+
+<form method="POST">
+  <input type="text" name="recipe_category">
+  <input type="submit" value="Add recipe category" class="btn btn-success" >
+</form>
+<ul>
+  {% for recipe_category in recipe_categories %}
+    <li>{{recipe_category}} <small><a href="{{ url_for('remove_item', name=item) }}">[Remove]</a></small>
+    <form action="{{url_for('delete_shoppinglist', id=shoppinglist.name)}}" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete" class="btn btn-danger"></li>
+    </form>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}
+
